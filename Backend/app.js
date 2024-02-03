@@ -2,7 +2,7 @@ const express = require('express')
 const app = express();
 const sequelize = require("../Backend/app/config/database")
 app.use(express.json());
-/*
+//#region 
 const sequelize = new Sequelize(dbConfig.DB,dbConfig.USER,dbConfig.PASSWORD,{
     host:dbConfig.HOST,
     dialect:dbConfig.dialect
@@ -13,7 +13,7 @@ try{
 }catch(error){
     console.error("Unable to Connect to database:",error)
 }
-*/
+//#endregion
 /* DB Area */
 
 //const db = require("./app/models");
