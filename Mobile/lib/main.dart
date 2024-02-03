@@ -1,58 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'core/app_export.dart';
+import 'splash_screen/splash_screen.dart'; // Import your splash screen
+import 'screens/screen1.dart'; // Import your main screen
+import 'screens/screen2.dart'; // Import your next screen
 
-var globalMessengerKey = GlobalKey<ScaffoldMessengerState>();
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  Future.wait([
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-    ]),
-    PrefUtils().init()
-  ]).then((value) {
-    runApp(MyApp());
-  });
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Sizer(
-      builder: (context, orientation, deviceType) {
-        return BlocProvider(
-          create: (context) => ThemeBloc(
-            ThemeState(
-              themeType: PrefUtils().getThemeData(),
-            ),
-          ),
-          child: BlocBuilder<ThemeBloc, ThemeState>(
-            builder: (context, state) {
-              return MaterialApp(
-                theme: theme,
-                title: 'pratinav_s_application9',
-                navigatorKey: NavigatorService.navigatorKey,
-                debugShowCheckedModeBanner: false,
-                localizationsDelegates: [
-                  AppLocalizationDelegate(),
-                  GlobalMaterialLocalizations.delegate,
-                  GlobalWidgetsLocalizations.delegate,
-                  GlobalCupertinoLocalizations.delegate,
-                ],
-                supportedLocales: [
-                  Locale(
-                    'en',
-                    '',
-                  ),
-                ],
-                initialRoute: AppRoutes.initialRoute,
-                routes: AppRoutes.routes,
+    return MaterialApp(
+      home: FutureBuilder(
+        // Simulate loading for the splash screen
+        future: Future.delayed(Duration(seconds: 3)), // Adjust the duration as needed
+        builder: (context, snapshot) {
+          switch (snapshot.connectionState) {
+            case ConnectionState.none:
+            case ConnectionState.waiting:
+              // Return the splash screen while it's loading
+              return splash_screen();
+              
+            default:
+              // Once the splash screen is done, navigate to the main screen
+              return Navigator(
+                onGenerateRoute: (settings) {
+                  return MaterialPageRoute(
+                    builder: (context) => NextScreen1(),
+                  );
+                },
               );
-            },
-          ),
-        );
-      },
+              
+          }
+        },
+      ),
     );
   }
 }
