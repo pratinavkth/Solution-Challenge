@@ -12,7 +12,7 @@ import 'package:mindfuldost_hub/homepage/home1.dart';
 
 
 // import 'splash_screen/dem01.dart'; // Import your splash screen
-import 'homepage/home1.dart'; // Import your home screen
+// import 'homepage/home1.dart'; // Import your home screen
 
 void main() {
   runApp(MyApp());
