@@ -11,8 +11,8 @@ import 'package:mindfuldost_hub/signin_signup/signup.dart';
 import 'package:mindfuldost_hub/homepage/home1.dart';
 
 
-import 'splash_screen/dem01.dart'; // Import your splash screen
-import 'homepage/home1.dart'; // Import your home screen
+// import 'splash_screen/dem01.dart'; // Import your splash screen
+// import 'homepage/home1.dart'; // Import your home screen
 
 void main() {
   runApp(MyApp());
@@ -28,9 +28,8 @@ class MyApp extends StatelessWidget {
         
         // Add any other theme configurations as needed
       ),
-      // home:splash_screen(),
+      home:splash_screen(),
       routes: {
-    '/': (context) => splash_screen(),
         '/splashscreen': (context) => splash_screen(),
         '/screen1': (context) => const SplashScreen1(),
         '/shakingScreen': (context) => ShakingScreen(),
@@ -40,7 +39,8 @@ class MyApp extends StatelessWidget {
         '/ws4': (context) =>  WelcomeScreen4(),
         '/signup': (context) =>  SignupPage(),
         '/login': (context) =>  SignInPage(),
-        // '/home1': (context) =>  Homepage(),
+        
+        '/home1': (context) =>  Homepage(username: 'User'),
       },
     );
   }

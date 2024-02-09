@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
-class Homepage extends StatelessWidget {
-  final String username;
-
+class Homepage extends StatefulWidget {
+  final String username;    
   Homepage({required this.username});
+  @override
+  _homepage createState() => _homepage();
+}
+class _homepage extends State<Homepage> {
+
+  String username = 'User';
 
   @override
   Widget build(BuildContext context) {
