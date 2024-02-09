@@ -4,127 +4,118 @@ import 'screen2.dart';
 
 
 
-class SplashScreen extends StatefulWidget {
+class SplashScreen1 extends StatefulWidget {
+  const SplashScreen1({super.key});
   @override
-  _SplashScreenState createState() => _SplashScreenState();
+  _SplashScreenState1 createState() => _SplashScreenState1();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
-  @override
-  void initState() {
-    super.initState();
-    startTimer();
-  }
+class _SplashScreenState1 extends State<SplashScreen1> {
+int progress=0;
+Timer? timer;
 
-  void startTimer() {
-    Timer(Duration(seconds: 5), () {
-      navigateToNextScreen();
-    });
-  }
+void startTime(){
+  timer?.cancel();
 
-  void navigateToNextScreen() {
+  timer=Timer.periodic(
+    const Duration(milliseconds: 50), 
+    (timer) {
+      if(timer.tick<=100){
+        setState(() {
+          progress=timer.tick;
+        });
+  }
+  else{
+    timer.cancel();
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => NextScreen1()),
+      MaterialPageRoute(builder: (context) => ShakingScreen()),
     );
   }
+  },
+  );
+}
+@override
+void initState(){
+  super.initState();
+  startTime();  
+}
+@override
+void dispose()
+{
+  super.dispose();
+  timer?.cancel();
+}
+@override
+Widget build(BuildContext context){
+  final w = MediaQuery.of(context).size.width;
+  final h = MediaQuery.of(context).size.height;
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: GestureDetector(
-        onTap: () {
-          navigateToNextScreen();
-        },
-        child: Center(
-          child: Text('Screen1'),
-        ),
+return Scaffold(
+  backgroundColor: const Color(0xff251404),
+  body:SafeArea(
+child: Stack(
+  alignment:Alignment.center ,
+  children: [
+    const SplashBackground(),
+    Text(
+      '$progress%',
+      style: const TextStyle(
+        color: Colors.white,
+        fontSize: 24,
+        fontWeight: FontWeight.bold,
       ),
-    );
-  }
+    )
+  ],
+  ))
+);  
+}
 }
 
-class NextScreen1 extends StatefulWidget {
-  @override
-  _NextScreenState createState() => _NextScreenState();
-}
-
-class _NextScreenState extends State<NextScreen1> {
-  double _progressValue = 0.0;
-
-
-  @override
-  void initState() {
-    super.initState();
-    _simulateLoading();
-    
-  }
-
-  Future<void> _simulateLoading() async {
-    for (int i = 0; i <= 100; i++) {
-      await Future.delayed(Duration(milliseconds: 50));
-      setState(() {
-        _progressValue = i / 100.0;
-      });
-    }
-    if(_progressValue == 1.0){
-    Timer(Duration(milliseconds: 50), () { 
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => ShakingScreen()),
-      );
-    });
-  }
-}
-  
-  // //after loading complete navigate to next screen SHAKING SCREEN
-  // void navigateToNextScreen() {
-  //   Navigator.pushReplacement(
-  //     context,
-  //     MaterialPageRoute(builder: (context) => ShakingScreen()),
-  //   );
-  // }
+class SplashBackground extends StatelessWidget {
+  const SplashBackground({super.key});
 
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
-    return Scaffold(
-      backgroundColor: Color.fromARGB(161, 157, 66, 10),
-      body: Center(
-        child: Stack(
-          //  Text('Next Screen'),
-          alignment: Alignment.center,
-          children: [
-            Expanded(
-              child: Image.asset(
-                'assets/images/screen1/logomarkscreen1.png',
-                fit: BoxFit.contain,
-              ),
-            ),
-            Positioned(
-              top: screenHeight * 0.4,
-              child: Container(
-                alignment: Alignment.center,
-                child: CircularProgressIndicator(
-                  value: _progressValue,
-                  backgroundColor: Colors.grey[300],
-                  valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
-                ),
-              ),
-            ),
-            Positioned(
-              bottom: screenHeight * 0.33,
-              child: Container(
-                alignment: Alignment.center,
-                child: Text(
-                  '${(_progressValue * 100).toStringAsFixed(1)}%',
-                  style: TextStyle(fontSize: 18.0,color:Colors.blue),
-                  
-                ),
-              ),
-            ),
-          ],
+    final w = MediaQuery.of(context).size.width;
+    final h = MediaQuery.of(context).size.height;
+    return Stack(
+      children: [
+        Positioned(
+          top: 14,
+          left: (w - 280) / 2,
+          child: const CircleWidget(),
         ),
+        Positioned(
+          top: ((h - 280) / 2) - 20,
+          left: -185,
+          child: const CircleWidget(),
+        ),
+        Positioned(
+          top: ((h - 280) / 2) - 20,
+          right: -185,
+          child: const CircleWidget(),
+        ),
+        Positioned(
+          bottom: 14,
+          left: (w - 280) / 2,
+          child: const CircleWidget(),
+        ),
+      ],
+    );
+  }
+}
+class CircleWidget extends StatelessWidget {
+  const CircleWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 280,
+      height: 280,
+      decoration: const BoxDecoration(
+        shape: BoxShape.circle,
+        color: Color(0xff4F3422),
       ),
     );
   }

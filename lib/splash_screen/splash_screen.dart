@@ -1,8 +1,16 @@
+import 'dart:async';
+import 'package:mindfuldost_hub/screens/screen1.dart';
 import 'package:flutter/material.dart';
 
 class splash_screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Timer(Duration(seconds: 5), () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => SplashScreen1()),
+      );
+    });
     return Scaffold(
       backgroundColor: Color.fromARGB(161, 157, 66, 10), // Set the background color to dark
       body: Center(

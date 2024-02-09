@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shake/shake.dart';
+import 'package:mindfuldost_hub/welcomescreen/ws1.dart';
 
 // before this screen, you should have screen1.dart and screen2.dart
 // so after loading 100 percent of previous screen i can come to here
@@ -21,7 +22,7 @@ class _ShakingScreenState extends State<ShakingScreen> {
     super.initState();
     // Set up the shake detector with a shake threshold
     detector = ShakeDetector.autoStart(
-      shakeThresholdGravity: 10.0,
+      shakeThresholdGravity: 5.0,
       onPhoneShake: () {
         navigateToNextScreen();
       },
@@ -30,7 +31,7 @@ class _ShakingScreenState extends State<ShakingScreen> {
    void navigateToNextScreen() {
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => NextScreen()),
+      MaterialPageRoute(builder: (context) => WelcomeScreen()),
     );
   }
 
@@ -43,27 +44,7 @@ class _ShakingScreenState extends State<ShakingScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            //small circle
-            // Container(
-            //   width: 50,
-            //   height: 50,
-            //     decoration: BoxDecoration(
-            //       shape: BoxShape.circle,
-            //       color: Colors.green.shade900,
-            //     ),
-            //   ),
-            // SizedBox(height: 8),
-            // //medium circle
-            // Container(
-            //   width: 100,
-            //   height: 100,
-            //     decoration: BoxDecoration(
-            //       shape: BoxShape.circle,
-            //       color: Colors.green.shade900,
-            //     ),
-            //   ),
-            // SizedBox(height: 8),
-            //large circle  
+             
             Container(
               width: 400,
               height: 400,
@@ -88,26 +69,7 @@ class _ShakingScreenState extends State<ShakingScreen> {
                 ]),
               ),
             SizedBox(height: 50),              
-        //     Text(
-        //       'Fetching Data.....',
-              
-        //       style: TextStyle(fontSize: 24, color: Colors.white),
-        //     ),
-            
-        //     Image.asset('assets/images/loadingscreen2/Solid mobile.png',width: 24,height: 24,),
-        //     SizedBox(height: 8),
-        // Text(
-        //   'Please shake your phone to continue',
-        //   style: TextStyle(fontSize: 16, color: Colors.white),
-        // ),
-            // SizedBox(height: 20),
-            // Image.asset('assets/images/loadingscreen2/vector-1.png'),
-            // SizedBox(height: 10), 
-            // Image.asset('assets/images/loadingscreen2/vector-2.png'),
-            // SizedBox(height: 10),
-            // Image.asset('assets/images/loadingscreen2/vector-3.png'),
-            // SizedBox(height: 10),
-            // Image.asset('assets/images/loadingscreen2/Solid mobile.png'),
+        
           ],
         ),
       ),
@@ -120,35 +82,35 @@ class _ShakingScreenState extends State<ShakingScreen> {
   }
 }
 
-class NextScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
-        child: Text(
-          'Next Screen',
-          style: TextStyle(fontSize: 24),
-        ),
-      ),
-    );
-  }
-}
-class Screen2 extends StatelessWidget {
-  final VoidCallback onLoadingComplete;
+// class NextScreen extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       backgroundColor: Colors.white,
+//       body: Center(
+//         child: Text(
+//           'Next Screen',
+//           style: TextStyle(fontSize: 24),
+//         ),
+//       ),
+//     );
+//   }
+// }
+// class Screen2 extends StatelessWidget {
+//   final VoidCallback onLoadingComplete;
 
-  const Screen2({Key? key, required this.onLoadingComplete}) : super(key: key);
+//   const Screen2({Key? key, required this.onLoadingComplete}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    // Your Screen2 implementation with circular loading
+//   @override
+//   Widget build(BuildContext context) {
+//     // Your Screen2 implementation with circular loading
 
-    // Assume circular loading completes somewhere in the code
-    // Call the callback to notify that loading is complete
-    onLoadingComplete();
+//     // Assume circular loading completes somewhere in the code
+//     // Call the callback to notify that loading is complete
+//     onLoadingComplete();
 
-    return Container(
-      // Your Screen2 UI
-    );
-  }
-}
+//     return Container(
+//       // Your Screen2 UI
+//     );
+//   }
+// }
