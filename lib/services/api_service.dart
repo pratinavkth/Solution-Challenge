@@ -15,7 +15,7 @@ class APIService{
       'Content-Type':'application/json',
       
     };
-var url=Uri.http(config.apiurl,config.loginurl);
+var url=Uri.parse(config.loginurl);
     var response = await client.post(
       url,
       headers: requestHeaders,
@@ -25,7 +25,7 @@ var url=Uri.http(config.apiurl,config.loginurl);
     if(response.statusCode == 200 ){
       // shared
       await SharedService.setloginDetails(loginresponseJson(response.body));
-
+      print(response.body);
       return true;
     }else{
       return false;
@@ -37,7 +37,7 @@ var url=Uri.http(config.apiurl,config.loginurl);
       'Content-Type':'application/json',
       
     };
-var url=Uri.http(config.apiurl,config.registerurl);
+var url=Uri.parse(config.registerurl);
     var response = await client.post(
       url,
       headers: requestHeaders,

@@ -82,35 +82,3 @@ class _ShakingScreenState extends State<ShakingScreen> {
   }
 }
 
-// class NextScreen extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       backgroundColor: Colors.white,
-//       body: Center(
-//         child: Text(
-//           'Next Screen',
-//           style: TextStyle(fontSize: 24),
-//         ),
-//       ),
-//     );
-//   }
-// }
-// class Screen2 extends StatelessWidget {
-//   final VoidCallback onLoadingComplete;
-
-//   const Screen2({Key? key, required this.onLoadingComplete}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     // Your Screen2 implementation with circular loading
-
-//     // Assume circular loading completes somewhere in the code
-//     // Call the callback to notify that loading is complete
-//     onLoadingComplete();
-
-//     return Container(
-//       // Your Screen2 UI
-//     );
-//   }
-// }

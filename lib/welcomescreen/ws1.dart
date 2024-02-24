@@ -75,6 +75,11 @@ class WelcomeScreen extends StatelessWidget {
             TextButton(
               onPressed: () {
                 // Handle sign in button press
+                Navigator.pushNamedAndRemoveUntil(
+                          context,
+                          '/login',
+                          (route) => false,
+                        );
               },
                child:
               // Text('Already have an account?   Sign In'),

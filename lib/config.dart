@@ -1,8 +1,8 @@
 class config{
   static const String appname = "Mindful Dost";
-  static const String baseurl = "{{baseUrl}}/Register/create";
-  static const String apiurl = "$baseurl/api";
-  static const String loginurl = "$apiurl/auth/login";
-  static const String registerurl = "$apiurl/auth/register";
-  static const String getuserurl = "$apiurl/auth/getuser";
+  static const String baseurl = "https://mindfulhub-413516.el.r.appspot.com";
+  // static const String apiurl = "$baseurl;
+  static const String loginurl = baseurl+"/Login/LoginByIdandPassword";
+  static const String registerurl = baseurl+"/Register/create";
+  // static const String getuserurl = "$apiurl/auth/getuser";
 }

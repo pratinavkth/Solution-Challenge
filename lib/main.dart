@@ -9,6 +9,17 @@ import 'package:mindfuldost_hub/welcomescreen/ws4.dart';
 import 'package:mindfuldost_hub/signin_signup/signin.dart';
 import 'package:mindfuldost_hub/signin_signup/signup.dart';
 import 'package:mindfuldost_hub/homepage/home1.dart';
+import 'package:mindfuldost_hub/assesment1/age.dart';
+import 'package:mindfuldost_hub/assesment1/gender.dart';
+import 'package:mindfuldost_hub/assesment1/weight.dart';
+import 'package:mindfuldost_hub/assessment2/assesment1.dart';
+// import 'package:mindfuldost_hub/assessment2/assesment1.dart';
+import 'package:mindfuldost_hub/assessment2/assesment2.dart';
+import 'package:mindfuldost_hub/assessment2/assesment3.dart';
+import 'package:mindfuldost_hub/assessment2/assesment4.dart';
+import 'package:mindfuldost_hub/assessment2/assesment5.dart';
+import 'package:mindfuldost_hub/assessment2/assesment6.dart';
+import 'package:mindfuldost_hub/homepage/home1.dart';
 
 
 // import 'splash_screen/dem01.dart'; // Import your splash screen
@@ -39,7 +50,16 @@ class MyApp extends StatelessWidget {
         '/ws4': (context) =>  WelcomeScreen4(),
         '/signup': (context) =>  SignupPage(),
         '/login': (context) =>  SignInPage(),
-        
+        '/age': (context) =>  AgeAssessment(),
+        '/gender': (context) =>  GenderScreen(),
+        '/weight': (context) =>  WeightPage(),
+        '/assesment1': (context) =>  MentalHealthAssessmentScreen(),
+        '/assesment2': (context) =>  MoodScreen(),
+        '/assesment3': (context) =>  HelpScreen(),
+        '/assesment4': (context) =>  DistressScreen(),
+        '/assesment5': (context) =>  MentalHealthAssessment(),
+        '/assesment6': (context) =>  medications(),
+        // '/home1': (context) =>  Homepage(username: 'User'),        
         '/home1': (context) =>  Homepage(username: 'User'),
       },
     );
