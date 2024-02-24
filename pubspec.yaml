@@ -16,6 +16,9 @@ dependencies:
   http: ^1.2.0
   flutter_cache_manager: ^3.3.1
   api_cache_manager: ^1.0.1
+  vibration: ^1.8.4
+  syncfusion_flutter_sliders: ^24.2.6
+
 
 
   # api_cache_manager: ^0.4.0   # Replace with the latest version
